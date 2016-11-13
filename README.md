@@ -2,8 +2,9 @@
 Library to prevent bots from breaking after simple Everybody Edits updates.
 
 # Currently only has support for receiving messages.
-EEProtocol in a Visual Studio 2015 Enterprise project containing the source code.
-EEProtocolTest in a Visual Studio 2015 Enterprise project containing some examples on how to use this library.
+EEProtocol is a Visual Studio 2015 Enterprise project containing the source code.
+
+EEProtocolTest is a Visual Studio 2015 Enterprise project containing some examples on how to use this library.
 
 ## In case you don't want to open up the test/example project, here is a how-to-use anyway:
 
@@ -34,8 +35,9 @@ Console.WriteLine("Joined player's y: " + m.GetInt(init.Parameters["y"].Id));
 ##### Method #3: Get ReceiveParameter object. Also gives you additional information.
 ```C#
 ReceiveParameter smiley = init.Parameters["smiley"]; // Once again, still case-sensitive.
-Console.WriteLine("Parameter \"" + smiley.Name + "\" has id \"" + smiley.Id + "\", value \"" + m.GetInt(smiley.Id) +
-                  "\", is of type \"" + smiley.Type + "\" and is described in the following way: \"" + smiley.Description + "\".");
+Console.WriteLine("Parameter \"" + smiley.Name + "\" has id \"" + smiley.Id +
+                  "\", value \"" + m.GetInt(smiley.Id) + "\", is of type \"" + smiley.Type +
+                  "\" and is described in the following way: \"" + smiley.Description + "\".");
 ```
 
 
