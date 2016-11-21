@@ -53,7 +53,7 @@ namespace EEProtocol
             {
                 using (WebClient client = new WebClient())
                 {
-                    //By setting the proxy to null, this makes downloading things faster.
+                    // Prevent HttpWebRequest from looking up system proxys, increasing download time by ~2-8 seconds.
                     client.Proxy = null;
                     rawProtocol = client.DownloadString(RAW_GIT_URL);
                 }
