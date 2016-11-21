@@ -53,6 +53,8 @@ namespace EEProtocol
             {
                 using (WebClient client = new WebClient())
                 {
+                    //By setting the proxy to null, this makes downloading things faster.
+                    client.Proxy = null;
                     rawProtocol = client.DownloadString(RAW_GIT_URL);
                 }
             }
