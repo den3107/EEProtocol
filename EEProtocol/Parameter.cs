@@ -2,8 +2,8 @@
 
 namespace EEProtocol
 {
-    /// <summary>Container class holding all information about a single receivable message's parameter.</summary>
-    public class ReceiveParameter
+    /// <summary>Container class holding all information about a single message's parameter.</summary>
+    public class Parameter
     {
         /// <summary>Id of parameter.</summary>
         public uint Id { get; private set; }
@@ -14,7 +14,7 @@ namespace EEProtocol
         /// <summary>Description of parameter (lower case).</summary>
         public String Description { get; private set; }
         
-        public ReceiveParameter(uint id, String type, String name, String description)
+        public Parameter(uint id, String type, String name, String description)
         {
             Id = id;
             Type = type;

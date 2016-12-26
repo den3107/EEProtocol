@@ -40,11 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ReceiveParameter.cs" />
+    <Compile Include="Parameter.cs" />
+    <Compile Include="ReceivableMessageList.cs" />
     <Compile Include="ReceivingMessage.cs" />
     <Compile Include="ProtocolReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegexMatchException.cs" />
+    <Compile Include="SendableMessageList.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

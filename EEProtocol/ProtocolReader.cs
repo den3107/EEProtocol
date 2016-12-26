@@ -22,22 +22,16 @@ namespace EEProtocol
         private static readonly String RGX_RECEIVE_MESSAGE_DATA = @"\|\s*`(?<id>(?:.+?|\[...\]))`\s*\|\s*`(?<type>.+?)`\s*\|\s*(?<name>.+?)\s*\|\s*(?<description>.+)";
         
         /// <summary>Dictionary containing all receivable messages, indexed by message name (lower case).</summary>
-        public static Dictionary<String, ReceivingMessage> ReceivableMessages { get; private set; }
-
-        /// <summary>Get the message with specific name. Name is not case-sensitive.</summary>
-        /// <param name="name">Name of message to obtain.</param>
-        /// <returns>ReceivingMessage object with specified name.</returns>
-        public ReceivingMessage this[String name]
-        {
-            get
-            {
-                return ReceivableMessages[name.ToLower()];
-            }
-        }
+        public static ReceivableMessageList ReceivableMessages { get; private set; }
+        
+        /// <summary>Dictionary containing all sendable messages, indexed by message name (lower case).</summary>
+        public static SendableMessageList SendableMessages { get; private set; }
 
         static ProtocolReader()
         {
-            ReceivableMessages = new Dictionary<string, ReceivingMessage>();
+            ReceivableMessages = new ReceivableMessageList();
+            SendableMessages = new SendableMessageList();
+
 
             String rawProtocol = "";
             #region Protocol downloading, put in rawProtocol
@@ -97,13 +91,13 @@ namespace EEProtocol
             foreach (KeyValuePair<String, String> message in rawMessages)
             {
                 matches = Regex.Matches(message.Value, RGX_RECEIVE_MESSAGE_DATA);
-                List<ReceiveParameter> parameters = new List<ReceiveParameter>();
+                List<Parameter> parameters = new List<Parameter>();
 
                 foreach (Match m in matches)
                 {
                     uint id = uint.MaxValue;
                     uint.TryParse(m.Groups["id"].Value, out id);
-                    parameters.Add(new ReceiveParameter(id, m.Groups["type"].Value, m.Groups["name"].Value.ToLower(), m.Groups["description"].Value));
+                    parameters.Add(new Parameter(id, m.Groups["type"].Value, m.Groups["name"].Value.ToLower(), m.Groups["description"].Value));
                 }
 
                 ReceivableMessages.Add(message.Key.ToLower(), new ReceivingMessage(message.Key.ToLower(), parameters));

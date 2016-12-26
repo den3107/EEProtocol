@@ -11,7 +11,7 @@ namespace EEProtocol
         public String Name { get; private set; }
 
         /// <summary>A list containing all ReceiveParameter objects.</summary>
-        public List<ReceiveParameter> AllParameters
+        public List<Parameter> AllParameters
         {
             get
             {
@@ -20,7 +20,7 @@ namespace EEProtocol
         }
 
         /// <summary>A dictionary containing all ReceiveParameter objects, indexed by name.</summary>
-        public Dictionary<String, ReceiveParameter> Parameters { get; private set; }
+        public Dictionary<String, Parameter> Parameters { get; private set; }
 
         /// <summary>Returns the id of the parameter with specified name. Name is not case-sensitive.</summary>
         /// <param name="name">Name of parameter id to find.</param>
@@ -36,11 +36,11 @@ namespace EEProtocol
         /// <summary>Constructor to create a ReceivingMessage and fill it's fields.</summary>
         /// <param name="name">Name of the message type.</param>
         /// <param name="parameters">All parameters that this message type contains.</param>
-        public ReceivingMessage(String name, List<ReceiveParameter> parameters)
+        public ReceivingMessage(String name, List<Parameter> parameters)
         {
             Name = name.ToLower();
-            Parameters = new Dictionary<String, ReceiveParameter>();
-            foreach (ReceiveParameter rp in parameters)
+            Parameters = new Dictionary<String, Parameter>();
+            foreach (Parameter rp in parameters)
             {
                 Parameters.Add(rp.Name.ToLower(), rp);
             }
