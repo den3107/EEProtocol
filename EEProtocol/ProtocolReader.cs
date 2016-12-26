@@ -45,6 +45,8 @@ namespace EEProtocol
             {
                 using (WebClient client = new WebClient())
                 {
+                    // Prevent HttpWebRequest from looking up system proxys, increasing download time by ~2-8 seconds.
+                    client.Proxy = null;
                     rawProtocol = client.DownloadString(RAW_GIT_URL);
                 }
             }
