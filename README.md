@@ -9,14 +9,19 @@ EEProtocolTest is a Visual Studio 2015 Enterprise project containing some exampl
 ## In case you don't want to open up the test/example project, here is a how-to-use anyway:
 
 ### Get init receivable message specifications.
-##### Method #1: Using the indexer of an ProtocolReader object reference.
+##### Method #1: Using the indexer of the ReceivableMessages field.
 ```C#
-ProtocolReader protocol = new ProtocolReader();
-ReceivingMessage init = protocol["iNiT"]; // Not case-sensitive.
+ReceivingMessage init = ProtocolReader.ReceivableMessages["iNiT"]; // Not case-sensitive.
 ```
-##### Method #2: Using ProtocolReader's static field "ReceivableMessages".
+##### Method #2: Put the the ReceivableMessages field in a local variable, so you don't have to add "ProtocolReader." everytime.
 ```C#
-ReceivingMessage init = ProtocolReader.ReceivableMessages["init"]; // This IS case-sensitive, meaning it has to be entirely lower-case.
+ReceivableMessageList receivableMessageList = ProtocolReader.ReceivableMessages;
+init = receivableMessageList["InIt"]; // Still case-insensitive
+```
+##### Method #3: Use the dictionary in the ReceivableMessages field, this will make the name case-sensetive, though.
+```C#
+Dictionary<String, ReceivingMessage> receivableMessages = ProtocolReader.ReceivableMessages.ReceivableMessages;
+init = receivableMessages["init"]; // This IS case-sensitive, meaning it has to be entirely lower-case.
 ```
 
 
