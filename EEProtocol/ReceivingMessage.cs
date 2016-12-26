@@ -33,13 +33,16 @@ namespace EEProtocol
             }
         }
 
+        /// <summary>Constructor to create a ReceivingMessage and fill it's fields.</summary>
+        /// <param name="name">Name of the message type.</param>
+        /// <param name="parameters">All parameters that this message type contains.</param>
         public ReceivingMessage(String name, List<ReceiveParameter> parameters)
         {
             Name = name.ToLower();
             Parameters = new Dictionary<String, ReceiveParameter>();
             foreach (ReceiveParameter rp in parameters)
             {
-                Parameters.Add(rp.Name, rp);
+                Parameters.Add(rp.Name.ToLower(), rp);
             }
         }
     }

@@ -7,19 +7,11 @@ namespace EEProtocol
 {
     /// <summary>
     ///     Reads the EE protocol git page and parses it's messages.
+    ///     Protocol is read and parsed upon creating a reference of accessing any static member.
+    ///     All values here are according to what's read from the git.
+    ///     No assumptions are made, unless mentioned otherwise.
+    ///     Errors might post additional information in stderr.
     /// </summary>
-    /// <remarks>
-    ///     <para>
-    ///         Protocol is read and parsed upon creating a reference of accessing any static member.
-    ///     </para>
-    ///     <para>
-    ///         All values here are according to what's read from the git.
-    ///         No assumptions are made, unless mentioned otherwise.
-    ///     </para>
-    ///     <para>
-    ///         Errors might post additional information in stderr.
-    ///     </para>
-    /// </remarks>
     /// <exception cref="System.Net.WebException">Thrown when there was an error while retrieving the protocol from the git page.</exception>
     /// <exception cref="EEProtocol.RegexMatchException">Thrown when something went wrong while retrieving data from the protocol.</exception>
     public class ProtocolReader
@@ -71,7 +63,7 @@ namespace EEProtocol
             }
             else
             {
-                throw new RegexMatchException("Couldn't find recieve portion of protocol.");
+                throw new RegexMatchException("Couldn't find receive portion of protocol.");
             }
             #endregion
 
